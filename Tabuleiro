@@ -1,0 +1,55 @@
+public class Tabuleiro {
+
+    private String[][] matriz;
+
+    public Tabuleiro() {
+        // Matriz 3x3 para representar o tabuleiro
+        this.matriz = new String[][] {
+                {" ", " ", " "},
+                {" ", " ", " "},
+                {" ", " ", " "}
+        };
+    }
+
+    public void exibirTabuleiro() {
+        System.out.println("\n    0   1   2");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(" " + matriz[i][j] + " ");
+                if (j < 2) System.out.print("|");
+            }
+            System.out.println();
+            if (i < 2) System.out.println("   -----------");
+        }
+        System.out.println();
+    }
+
+    public boolean estaVazio(int linha, int coluna) {
+        return matriz[linha][coluna].equals(" ");
+    }
+
+    public void fazerJogada(int linha, int coluna, String simbolo) {
+        matriz[linha][coluna] = simbolo;
+    }
+
+    public boolean verificarVitoria(String simbolo) {
+
+        // Verifica linhas e colunas
+        for (int i = 0; i < 3; i++) {
+            if ((matriz[i][0].equals(simbolo) && matriz[i][1].equals(simbolo) && matriz[i][2].equals(simbolo)) ||
+                    (matriz[0][i].equals(simbolo) && matriz[1][i].equals(simbolo) && matriz[2][i].equals(simbolo))) {
+                return true;
+            }
+        }
+
+        // Verifica diagonais
+        if ((matriz[0][0].equals(simbolo) && matriz[1][1].equals(simbolo) && matriz[2][2].equals(simbolo)) ||
+                (matriz[0][2].equals(simbolo) && matriz[1][1].equals(simbolo) && matriz[2][0].equals(simbolo))) {
+            return true;
+        }
+
+        return false;
+    }
+
+}
