@@ -1,0 +1,28 @@
+public class Jogador {
+    private String nome;
+    private int pontos;
+    private Peca peca;
+
+    public Jogador(String nome, String simbolo) {
+
+        this.nome = nome;
+        this.pontos = 0;
+        this.peca = new Peca(simbolo);
+
+    }
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public int getPontos() {
+        return pontos;
+    }
+    public void incrementarPontos() {
+        this.pontos++;
+    }
+    public Peca getPeca() {
+        return peca;
+    }
+ }
